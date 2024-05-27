@@ -1,6 +1,8 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
+import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideClientHydration()]
+  providers: [provideRouter(routes), provideAnimationsAsync()],
 };
