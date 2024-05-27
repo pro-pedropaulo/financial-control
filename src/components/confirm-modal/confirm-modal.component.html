@@ -1,0 +1,10 @@
+<div class="modal-backdrop" (click)="close()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <h2>Confirmar Exclusão</h2>
+        <p>Você tem certeza que deseja excluir esta transação?</p>
+        <div class="actions">
+            <button (click)="confirm()">Sim</button>
+            <button (click)="close()">Não</button>
+        </div>
+    </div>
+</div>
