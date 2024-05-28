@@ -53,10 +53,31 @@
 
   form {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 
-    input[type='text'],
+    .flex-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &.error {
+          border-color: #c62828;
+        }
+      }
+    }
+
     input[type='number'] {
       flex: 1;
       padding: 10px;
@@ -136,6 +157,11 @@
   form {
     flex-direction: column;
     gap: 10px;
+
+    .flex-container {
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .radio-group {
       flex-direction: column;

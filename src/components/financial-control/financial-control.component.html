@@ -15,13 +15,21 @@
         </div>
     </div>
     <form (submit)="addTransaction()">
-        <input type="text" placeholder="Descrição" [(ngModel)]="description" name="description" required />
-        <input type="number" placeholder="Valor" [(ngModel)]="amount" name="amount" required />
-        <div class="radio-group">
-            <label><input type="radio" [(ngModel)]="type" name="type" value="income" required /> Entrada</label>
-            <label><input type="radio" [(ngModel)]="type" name="type" value="expense" /> Saída</label>
+        <div class="flex-container">
+            <div class="input-group">
+                <input type="text" placeholder="Descrição" [(ngModel)]="description" name="description" required
+                    [class.error]="showDescriptionError" aria-label="Descrição da Transação" />
+            </div>
+            <input type="number" placeholder="Valor" [(ngModel)]="amount" name="amount" required
+                aria-label="Valor da Transação" />
+            <div class="radio-group" role="radiogroup" aria-label="Tipo de Transação">
+                <label><input type="radio" [(ngModel)]="type" name="type" value="income" required
+                        aria-label="Entrada" /> Entrada</label>
+                <label><input type="radio" [(ngModel)]="type" name="type" value="expense" aria-label="Saída" />
+                    Saída</label>
+            </div>
+            <button type="submit" aria-label="Adicionar Transação">Adicionar</button>
         </div>
-        <button type="submit">Adicionar</button>
     </form>
     <table>
         <thead>
@@ -37,7 +45,7 @@
                 <td>{{ transaction.description }}</td>
                 <td>R$ {{ transaction.amount | number:'1.2-2' }}</td>
                 <td>{{ getTransactionType(transaction.type) }}</td>
-                <td><button (click)="openConfirmModal(transaction)">🗑️</button></td>
+                <td><button (click)="openConfirmModal(transaction)" aria-label="Remover Transação">🗑️</button></td>
             </tr>
         </tbody>
     </table>

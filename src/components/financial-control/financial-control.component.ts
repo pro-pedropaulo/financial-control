@@ -23,12 +23,18 @@ export class FinancialControlComponent {
   total = 0;
   showConfirmModal = false;
   transactionToDelete: Transaction | null = null;
+  showDescriptionError = false;
 
   constructor() {
     this.loadTransactions();
   }
 
   addTransaction() {
+    if (!this.description.trim()) {
+      this.showDescriptionError = true;
+      return;
+    }
+
     const newTransaction: Transaction = {
       description: this.description,
       amount: this.amount,
@@ -40,6 +46,7 @@ export class FinancialControlComponent {
     this.description = '';
     this.amount = 0;
     this.type = 'income';
+    this.showDescriptionError = false;
   }
 
   openConfirmModal(transaction: Transaction) {
