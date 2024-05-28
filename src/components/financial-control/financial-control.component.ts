@@ -3,12 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
-
-interface Transaction {
-  description: string;
-  amount: number;
-  type: string;
-}
+import { Transaction } from '../../models/transaction.model';
 
 @Component({
   selector: 'app-financial-control',
