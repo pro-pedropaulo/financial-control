@@ -1,0 +1,46 @@
+<div class="financial-container">
+    <h1>Controle Financeiro</h1>
+    <div class="summary">
+        <div class="summary-item incomes">
+            <p>Entradas</p>
+            <p>R$<span>{{ totalIncomes | number:'1.2-2' }}</span></p>
+        </div>
+        <div class="summary-item expenses">
+            <p>Saídas</p>
+            <p>R$<span>{{ totalExpenses | number:'1.2-2' }}</span></p>
+        </div>
+        <div class="summary-item total">
+            <p>Total</p>
+            <p>R$<span>{{ total | number:'1.2-2' }}</span></p>
+        </div>
+    </div>
+    <form (submit)="addTransaction()">
+        <input type="text" placeholder="Descrição" [(ngModel)]="description" name="description" required />
+        <input type="number" placeholder="Valor" [(ngModel)]="amount" name="amount" required />
+        <div class="radio-group">
+            <label><input type="radio" [(ngModel)]="type" name="type" value="income" required /> Entrada</label>
+            <label><input type="radio" [(ngModel)]="type" name="type" value="expense" /> Saída</label>
+        </div>
+        <button type="submit">Adicionar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{ transaction.description }}</td>
+                <td>R$ {{ transaction.amount | number:'1.2-2' }}</td>
+                <td>{{ getTransactionType(transaction.type) }}</td>
+                <td><button (click)="openConfirmModal(transaction)">🗑️</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <app-confirm-modal *ngIf="showConfirmModal" (confirmed)="confirmDeletion()"
+        (closed)="closeConfirmModal()"></app-confirm-modal>
+</div>
