@@ -37,7 +37,7 @@ Aplicação Angular para realizar controle financeiro de entradas e saidas de va
 
 ## Acessar sistema online
 
--- aguardando deploy
+-- https://financial-control-git-main-pedros-projects-a4954bcf.vercel.app/
 
 ## Testes
 
